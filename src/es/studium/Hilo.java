@@ -42,18 +42,19 @@ public class Hilo extends Thread {
 						// Si el número ingresado es menor que que el número aleatorio
 						if (Integer.parseInt(part1) < Servidor.random) {
 							Servidor.textarea.append(
-									part + ">" + " ha elegido el número " + part1 + ", pero el número es MAYOR \n");
+									" "+part + ">" + " ha elegido el número " + part1 + ", pero el número es MAYOR \n");
 							// Si el número ingresado es mayor que el número aleatorio
 						} else if (Integer.parseInt(part1) > Servidor.random) {
 							Servidor.textarea.append(
-									part + ">" + " ha elegido el número " + part1 + ", pero el número es MENOR \n");
+									" "+part + ">" + " ha elegido el número " + part1 + ", pero el número es MENOR \n");
 							// Si el número ingresado es igual al número aleatorio
 						} else if (Integer.parseInt(part1) == Servidor.random) {
 							// TENEMOS ACERTANTE
 							Servidor.textarea
-									.append(part + "> " + "ha elegido el número " + part1 + " y ¡HA ACERTADO! \n"
-											+ "Se cerrará la aplicación en 10 segundos debido a que el usuario\n" + part
-											+ " ha ganado");
+									.append(" "+part + "> " + "ha elegido el número " + part1 + " y ¡HA ACERTADO! \n\n"+
+											"EL NÚMERO SECRETO ERA "+part1+"\n"
+											+ " **¡¡HURRA POR "+part.toUpperCase()+"!!**\n"
+											+ "\n--La aplicación se cerrará en 10 segundos--\n" );
 							texto = Servidor.textarea.getText();
 							EnviarMensajes(texto);
 							Thread.sleep(10000);

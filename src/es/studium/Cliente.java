@@ -77,7 +77,7 @@ public class Cliente extends JFrame implements ActionListener {
 		try {
 			fentrada = new DataInputStream(socket.getInputStream());
 			fsalida = new DataOutputStream(socket.getOutputStream());
-			String texto = "> Entra en el chat... " + nombre + "\n";
+			String texto = " > " + nombre + " ha entrado en el chat...";
 			fsalida.writeUTF(texto);
 
 		} catch (IOException ex) {
@@ -89,7 +89,7 @@ public class Cliente extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == boton) {
-			String texto = nombre + "> " + mensaje.getText();
+			String texto = nombre + " > " + mensaje.getText();
 			deshabilitar();
 			mensaje.setText("");
 			try {
@@ -98,7 +98,7 @@ public class Cliente extends JFrame implements ActionListener {
 				e1.printStackTrace();
 			}
 		} else if (e.getSource() == desconectar) {
-			String texto = " > Abandona el chat... " + nombre;
+			String texto = " > "+ nombre + " ha abandonado el chat...";
 			try {
 				fsalida.writeUTF(texto);
 				fsalida.writeUTF("*");
